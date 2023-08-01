@@ -6,7 +6,7 @@
     <el-row>
       <el-col :span="3"></el-col>
       <el-col :span="12">
-        <HomeCarouselIndex />
+        <HomeTabs />
       </el-col>
       <el-col :span="6"></el-col>
       <el-col :span="3"></el-col>
@@ -16,13 +16,13 @@
 
 <script>
 import WebCarousel from '@/components/CommonConstants/web-carousel/web-carousel'
-import HomeCarouselIndex from './components/home-carousel/home-carousel-index'
+import HomeTabs from './components/home-tabs/home-tabs'
 
 export default {
   name: 'HomeIndex',
   components: {
     WebCarousel,
-    HomeCarouselIndex
+    HomeTabs
   }
 }
 </script>

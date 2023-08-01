@@ -6,7 +6,6 @@
       </el-carousel-item>
     </el-carousel>
   </div>
-  <div>123</div>
 </template>
 
 <script>

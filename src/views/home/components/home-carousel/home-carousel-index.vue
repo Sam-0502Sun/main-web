@@ -11,7 +11,8 @@
           <el-col :span="12">
             <div class="info-box">
               <router-link class="article-title" :to="item.link">{{item.title}}</router-link>
-              <span>{{item.date}}</span>
+              <span v-if="activeTabs=true">{{item.date}}123</span>
+              <span v-if="activeTabs=false">{{item.date}}456</span>
               <span>{{item.txt}}</span>
             </div>
           </el-col>
@@ -22,11 +23,28 @@
 </template>
 
 <script>
-import { reactive } from 'vue'
+import { reactive, ref, watch } from 'vue'
 
 export default {
   name: 'HomeCarouselIndex',
-  setup () {
+  props: {
+    changeTabs: {
+      type: Boolean,
+      default: true
+    }
+  },
+  setup (props) {
+    const activeTabs = ref(true)
+    console.log(props)
+    watch(
+      // 监听是否可展示
+      () => props.changeTabs,
+      (newVal, oldVal) => {
+        console.log('改变的值', newVal)
+        activeTabs.value = newVal
+        this.$forceUpdate()
+      }
+    )
     const HomeCarouselList = reactive([
       {
         name: 'first',
@@ -63,7 +81,8 @@ export default {
     ])
 
     return {
-      HomeCarouselList
+      HomeCarouselList,
+      activeTabs
     }
   }
 }

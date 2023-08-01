@@ -1,0 +1,87 @@
+<template>
+  <div>
+    <el-row class="top-part">
+      <el-col class="tabs-main-txt" :span="7">
+        <span>—— 新闻中心</span>
+      </el-col>
+      <el-col :span="8">
+        <div class="two-tabs">
+          <span @mouseover="chooseTab('true')">学院要闻</span>
+          <span @mouseover="chooseTab('false')">校园快讯</span>
+        </div>
+      </el-col>
+      <el-col :span="9">
+        <div class="end-check-more">
+          <span>| 查看更多 ></span>
+        </div>
+      </el-col>
+    </el-row>
+    <div>
+      <HomeCarouselIndex :changeTabs="changeTabs" :key="key" />
+    </div>
+  </div>
+</template>
+
+<script>
+import HomeCarouselIndex from '../home-carousel/home-carousel-index'
+import { ref } from 'vue'
+
+export default {
+  name: 'HomeTabs',
+  components: {
+    HomeCarouselIndex
+  },
+  setup () {
+    const key = ref(1)
+    const changeTabs = ref(true)
+
+    const chooseTab = (i) => {
+      if (i === 'true') {
+        changeTabs.value = true
+        key.value += 1
+      } else {
+        changeTabs.value = false
+        key.value += 1
+      }
+    }
+
+    return {
+      chooseTab,
+      changeTabs,
+      key
+    }
+  }
+}
+</script>
+
+<style lang="less" scoped>
+.top-part {
+  display: flex;
+  width: 100%;
+  margin: 10px 0;
+  .tabs-main-txt {
+    span {
+      font-size: 25px;
+    }
+  }
+  .two-tabs {
+    line-height: 35px;
+    span {
+      display: inline-block;
+      margin-right: 10px;
+      cursor: pointer;
+    }
+  }
+  .end-check-more {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    line-height: 35px;
+    span {
+      color: #6a6f6f;
+      font-size: 14px;
+      cursor: pointer;
+    }
+  }
+}
+</style>
