@@ -8,10 +8,9 @@
         <li><a href="javascript:;">访客</a></li>
       </ul>
       <ul class="nav-right-ul">
-        <li><a href="javascript:;">考生</a></li>
-        <li><a href="javascript:;">在校生</a></li>
-        <li><a href="javascript:;">教职工</a></li>
-        <li><a href="javascript:;">访客</a></li>
+        <li><a href="javascript:;">信息门户</a></li>
+        <li><a href="javascript:;">English</a></li>
+        <li><a href="javascript:;">网站地图</a></li>
       </ul>
     </div>
   </div>
@@ -25,28 +24,32 @@ export default {
 
 <style lang="less" scoped>
 .nav-container {
-  background-color: #1F55DBD6;
+  width: 100%;
+  background-color: #183fe6;
   .nav-box {
     display: flex;
+    max-width: 1240px;
+    margin: 0 auto;
     ul {
       display: flex;
-      height: 30px;
+      height: 40px;
       width: 50%;
       margin: 0;
       padding: 0;
 
       li {
         list-style: none;
+        font-size: 15px;
 
         a {
           padding: 0 15px;
-          color: #cdcdcd;
+          color: white;
           line-height: 1;
           display: inline-block;
           text-decoration: none;
 
           &:hover {
-            color: #3070e5;
+            color: #00040c;
           }
         }
 
