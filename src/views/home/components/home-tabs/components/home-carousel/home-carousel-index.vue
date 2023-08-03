@@ -11,8 +11,8 @@
           <el-col :span="12">
             <div class="info-box">
               <router-link class="article-title" :to="item.link">{{item.title}}</router-link>
-              <span v-if="activeTabs=true">{{item.date}}123</span>
-              <span v-if="activeTabs=false">{{item.date}}456</span>
+              <span v-if="activeTabs">{{item.date}}123</span>
+              <span v-else>{{item.date}}456</span>
               <span>{{item.txt}}</span>
             </div>
           </el-col>
@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import { reactive, ref, watch } from 'vue'
+import { reactive, ref } from 'vue'
 
 export default {
   name: 'HomeCarouselIndex',
@@ -34,17 +34,8 @@ export default {
     }
   },
   setup (props) {
-    const activeTabs = ref(true)
-    console.log(props)
-    watch(
-      // 监听是否可展示
-      () => props.changeTabs,
-      (newVal, oldVal) => {
-        console.log('改变的值', newVal)
-        activeTabs.value = newVal
-        this.$forceUpdate()
-      }
-    )
+    const activeTabs = ref(props.changeTabs)
+
     const HomeCarouselList = reactive([
       {
         name: 'first',
@@ -93,7 +84,7 @@ export default {
   .el-carousel__container {
     .el-carousel__item {
       .img-box {
-        height: 300px;
+        height: 250px;
         .img {
           width: 100%;
           height: 100%;
@@ -125,7 +116,7 @@ export default {
     }
   }
   :deep(.el-carousel__container) {
-    height: 300px;
+    height: 250px;
   }
   // 修改Element Plus轮播图横线指示器，变为圆点
   :deep(.el-carousel__indicator.is-active button) {

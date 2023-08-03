@@ -9,7 +9,19 @@ const routes = [
       {
         path: '/',
         name: 'home',
-        component: () => import(/* webpackChunkName: "about" */ '../views/home/home-index')
+        component: () => import('../views/home/home-index')
+      },
+      {
+        path: '/xygk',
+        name: 'collegeProfile',
+        component: () => import('../views/college-profile/college-profile-index'),
+        children: [
+          {
+            path: '/xygk/xyjs',
+            name: 'collegeIntroduce',
+            component: () => import('../views/college-profile/components/college-introduce-index')
+          }
+        ]
       }
     ]
   }

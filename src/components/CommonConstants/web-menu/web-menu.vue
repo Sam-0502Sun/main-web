@@ -4,11 +4,12 @@
       :default-active="activeIndex"
       class="el-menu-demo"
       mode="horizontal"
+      :v-model="activeIndex"
       @select="handleSelect"
-      router="true"
+      router
     >
       <template v-for="item in menuList" :key="item.name">
-        <el-sub-menu v-if="item.children" :index="item.url">
+        <el-sub-menu v-if="item.children" :index="item.url" @click="moveTo(item)">
           <template #title>{{item.name}}</template>
           <el-menu-item v-for="i in item.children" :key="i.name" :index="i.url">{{i.name}}</el-menu-item>
         </el-sub-menu>
@@ -20,6 +21,7 @@
 
 <script>
 import { reactive, ref } from 'vue'
+import { useRouter } from 'vue-router'
 
 export default {
   name: 'WebMenu',
@@ -243,10 +245,19 @@ export default {
         ]
       }
     ])
+    const router = useRouter()
+    // const route = useRoute()
+    const moveTo = (item) => {
+      router.push(item.url)
+      activeIndex.value = item.url
+      console.log(item.url)
+      // activeIndex.value = route.path
+    }
 
     return {
       activeIndex,
-      menuList
+      menuList,
+      moveTo
     }
   }
 }

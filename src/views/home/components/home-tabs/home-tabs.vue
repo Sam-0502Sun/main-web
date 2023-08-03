@@ -1,10 +1,10 @@
 <template>
   <div>
     <el-row class="top-part">
-      <el-col class="tabs-main-txt" :span="7">
-        <span>—— 新闻中心</span>
+      <el-col class="tabs-main-txt" :span="9">
+        <span>— 新闻中心</span>
       </el-col>
-      <el-col :span="8">
+      <el-col :span="6">
         <div class="two-tabs">
           <span @mouseover="chooseTab('true')">学院要闻</span>
           <span @mouseover="chooseTab('false')">校园快讯</span>
@@ -19,17 +19,22 @@
     <div>
       <HomeCarouselIndex :changeTabs="changeTabs" :key="key" />
     </div>
+    <div class="article">
+      <HomeArticleList />
+    </div>
   </div>
 </template>
 
 <script>
-import HomeCarouselIndex from '../home-carousel/home-carousel-index'
+import HomeCarouselIndex from './components/home-carousel/home-carousel-index'
+import HomeArticleList from './components/home-article-list/home-article-list'
 import { ref } from 'vue'
 
 export default {
   name: 'HomeTabs',
   components: {
-    HomeCarouselIndex
+    HomeCarouselIndex,
+    HomeArticleList
   },
   setup () {
     const key = ref(1)
@@ -83,5 +88,8 @@ export default {
       cursor: pointer;
     }
   }
+}
+.article {
+  margin-top: 20px;
 }
 </style>
