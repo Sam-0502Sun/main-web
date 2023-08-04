@@ -12,14 +12,7 @@ const routes = [
         name: 'collegeProfile',
         component: () => import('../views/college-profile/college-profile-index'),
         meta: { title: '学院概况' },
-        redirect: '/xygk',
         children: [
-          {
-            path: '/xygk',
-            name: 'defaultPage',
-            component: () => import('../views/college-profile/default-page/default-page'),
-            meta: { title: '学院概况' }
-          },
           {
             path: '/xygk/xyjs',
             name: 'collegeIntroduce',

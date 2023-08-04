@@ -273,8 +273,11 @@ export default {
 
   .el-sub-menu {
   }
-  .el-menu-item:hover{
-    background-color: #ecf5ff !important;;
-  }
+  //.el-menu-item:hover{
+  //  background-color: unset !important;
+  //}
+  //.el-menu-item:active{
+  //  background-color: unset !important;
+  //}
 }
 </style>
