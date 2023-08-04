@@ -4,28 +4,27 @@
       :default-active="activeIndex"
       class="el-menu-demo"
       mode="horizontal"
-      :v-model="activeIndex"
-      @select="handleSelect"
       router
     >
       <template v-for="item in menuList" :key="item.name">
-        <el-sub-menu v-if="item.children" :index="item.url" @click="moveTo(item)">
-          <template #title>{{item.name}}</template>
-          <el-menu-item v-for="i in item.children" :key="i.name" :index="i.url">{{i.name}}</el-menu-item>
+        <el-sub-menu v-if="item.children" :index="item.url">
+          <template #title>{{ item.name }}</template>
+          <el-menu-item v-for="i in item.children" :key="i.name" :index="i.url">{{ i.name }}</el-menu-item>
         </el-sub-menu>
-        <el-menu-item v-else :index="item.url">{{item.name}}</el-menu-item>
+        <el-menu-item v-else :index="item.url">{{ item.name }}</el-menu-item>
       </template>
     </el-menu>
   </div>
 </template>
 
 <script>
-import { reactive, ref } from 'vue'
-import { useRouter } from 'vue-router'
+import { reactive, ref, watch } from 'vue'
+import { useRoute } from 'vue-router'
 
 export default {
   name: 'WebMenu',
   setup () {
+    const route = useRoute()
     const activeIndex = ref('/')
     const menuList = reactive([
       {
@@ -36,6 +35,10 @@ export default {
         name: '学院概况',
         url: '/xygk',
         children: [
+          {
+            name: '学院概况',
+            url: '/xygk'
+          },
           {
             name: '学院介绍',
             url: '/xygk/xyjs'
@@ -245,19 +248,19 @@ export default {
         ]
       }
     ])
-    const router = useRouter()
-    // const route = useRoute()
-    const moveTo = (item) => {
-      router.push(item.url)
-      activeIndex.value = item.url
-      console.log(item.url)
-      // activeIndex.value = route.path
+
+    const picBtn = () => {
+      activeIndex.value = route.path
+      console.log(activeIndex.value)
     }
+
+    watch(route, () => {
+      picBtn()
+    }, { deep: true, immediate: true })
 
     return {
       activeIndex,
-      menuList,
-      moveTo
+      menuList
     }
   }
 }
@@ -267,5 +270,11 @@ export default {
 .menu-container {
   max-width: 1240px;
   margin: 0 auto;
+
+  .el-sub-menu {
+  }
+  .el-menu-item:hover{
+    background-color: #ecf5ff !important;;
+  }
 }
 </style>

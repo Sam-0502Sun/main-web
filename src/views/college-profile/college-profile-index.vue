@@ -1,14 +1,20 @@
 <template>
-  <div>学院概况</div>
+  <div>
+    <ProfileHeader />
+  </div>
   <div>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
+import ProfileHeader from './components/profile-header'
 
 export default {
-  name: 'CollegeProfile'
+  name: 'CollegeProfile',
+  components: {
+    ProfileHeader
+  }
 }
 </script>
 
