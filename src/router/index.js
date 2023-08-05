@@ -16,8 +16,26 @@ const routes = [
           {
             path: '/xygk/xyjs',
             name: 'collegeIntroduce',
-            component: () => import('../views/college-profile/introduction-page/college-introduce-index'),
+            component: () => import('../views/college-profile/collage/introduction-page/college-introduce-index'),
             meta: { title: '学院介绍' }
+          },
+          {
+            path: '/xygk/xsyg',
+            name: 'collegeHistory',
+            component: () => import('../views/college-profile/collage/history-page/history-page-index'),
+            meta: { title: '校史沿革' }
+          },
+          {
+            path: '/xygk/xrld',
+            name: 'collegeLeaders',
+            component: () => import('../views/college-profile/collage/leaders-page/leaders-page-index'),
+            meta: { title: '现任领导' }
+          },
+          {
+            path: '/xygk/xxbs',
+            name: 'collegeLogo',
+            component: () => import('../views/college-profile/collage/logo-page/logo-page-index'),
+            meta: { title: '学校标识' }
           }
         ]
       }

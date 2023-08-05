@@ -40,6 +40,7 @@ export default {
     const key = ref(1)
     const changeTabs = ref(true)
 
+    // 两个 Tab 标签，触发 chooseTab() 方法，修改 changeTabs 值！传递给子组件
     const chooseTab = (i) => {
       if (i === 'true') {
         changeTabs.value = true

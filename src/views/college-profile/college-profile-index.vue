@@ -3,23 +3,25 @@
     <ProfileHeader />
   </div>
   <div class="pages" v-if="route.path === '/xygk'">
-    <DefaultPage />
+    <DefaultPageIndex />
   </div>
   <div class="pages" v-else>
-    <router-view></router-view>
+    <CollegeIndex />
   </div>
 </template>
 
 <script>
 import ProfileHeader from './components/profile-header'
-import DefaultPage from './default-page/default-page'
+import DefaultPageIndex from './default-page/default-page-index'
+import CollegeIndex from './collage/college-index'
 import { useRoute } from 'vue-router'
 
 export default {
   name: 'CollegeProfile',
   components: {
     ProfileHeader,
-    DefaultPage
+    DefaultPageIndex,
+    CollegeIndex
   },
   setup () {
     const route = useRoute()

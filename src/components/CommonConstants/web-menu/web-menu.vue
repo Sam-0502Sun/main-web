@@ -24,8 +24,11 @@ import { useRoute } from 'vue-router'
 export default {
   name: 'WebMenu',
   setup () {
+    // 引入 route 实例
     const route = useRoute()
     const activeIndex = ref('/')
+
+    // 菜单栏数据
     const menuList = reactive([
       {
         name: '首页',
@@ -79,7 +82,7 @@ export default {
           },
           {
             name: '网络教学平台',
-            url: '/xygk/xrld'
+            url: '/jyjx/wljxpt'
           }
         ]
       },
@@ -249,11 +252,13 @@ export default {
       }
     ])
 
+    // picBtn() 方法给 activeIndex 赋值
     const picBtn = () => {
       activeIndex.value = route.path
       console.log(activeIndex.value)
     }
 
+    // 监听route变化，发生变化立刻调用 picBtn() 方法
     watch(route, () => {
       picBtn()
     }, { deep: true, immediate: true })

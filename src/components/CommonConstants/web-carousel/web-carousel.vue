@@ -14,6 +14,7 @@ import { reactive } from 'vue'
 export default {
   name: 'WebCarousel',
   setup () {
+    // 轮播图数据
     const carouselList = reactive([
       {
         name: 'first',

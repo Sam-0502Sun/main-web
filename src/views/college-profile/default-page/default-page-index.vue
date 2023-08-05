@@ -21,7 +21,7 @@
 import { reactive } from 'vue'
 
 export default {
-  name: 'DefaultPage',
+  name: 'DefaultPageIndex',
   setup () {
     const cardList = reactive([
       {
@@ -57,7 +57,7 @@ export default {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px 10px;
-  margin: 20px 0;
+  margin: 40px 0;
   .card-container {
     height: 200px;
     width: 400px;

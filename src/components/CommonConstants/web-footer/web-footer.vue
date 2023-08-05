@@ -41,6 +41,7 @@ import { reactive } from 'vue'
 export default {
   name: 'WebFooter',
   setup () {
+    // 资源导航数据
     const resourceNavList = reactive([
       {
         name: '教务系统',
@@ -87,6 +88,7 @@ export default {
         url: '/'
       }
     ])
+    // 推荐导航数据
     const recommendNavList = reactive([
       {
         name: '中华人民共和国民政部',

@@ -1,9 +1,12 @@
 <template>
   <div class="breadcrumb-container">
-    <div class="breadcrumb-box">
-      <el-breadcrumb :separator-icon="ArrowRight">
-        <el-breadcrumb-item  v-for="item in breadcrumbList" :key="item.name" :to="item.path">{{item.meta.title}}</el-breadcrumb-item>
-      </el-breadcrumb>
+    <div class="breadcrumb-body">
+      <span class="breadcrumb-title">当前位置：</span>
+      <div class="breadcrumb-box">
+        <el-breadcrumb :separator-icon="ArrowRight">
+          <el-breadcrumb-item  v-for="item in breadcrumbList" :key="item.name" :to="item.path">{{item.meta.title}}</el-breadcrumb-item>
+        </el-breadcrumb>
+      </div>
     </div>
   </div>
 </template>
@@ -43,17 +46,30 @@ export default {
 .breadcrumb-container {
   height: 50px;
   width: 100%;
-  .breadcrumb-box {
+  .breadcrumb-body {
     float: right;
     height: 100%;
-    display: flex;
-    align-items: center;
-    margin-right: 20px;
-    .el-breadcrumb {
+    .breadcrumb-title {
+      display: inline-block;
       color: white;
-      .el-breadcrumb__item {
-        :deep(.el-breadcrumb__inner) {
-          color: white;
+      height: 100%;
+      line-height: 50px;
+      font-size: 16px;
+      margin-right: 10px;
+    }
+    .breadcrumb-box {
+      float: right;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      margin-right: 20px;
+      .el-breadcrumb {
+        color: white;
+        .el-breadcrumb__item {
+          font-size: 14px;
+          :deep(.el-breadcrumb__inner) {
+            color: white;
+          }
         }
       }
     }

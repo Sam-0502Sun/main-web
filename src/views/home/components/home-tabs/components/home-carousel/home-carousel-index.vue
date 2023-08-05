@@ -34,8 +34,10 @@ export default {
     }
   },
   setup (props) {
+    // 接收父组件传递的值，赋值给响应式数据 activeTabs
     const activeTabs = ref(props.changeTabs)
 
+    // Home页小轮播图数据
     const HomeCarouselList = reactive([
       {
         name: 'first',
