@@ -16,19 +16,19 @@
       </el-col>
     </el-row>
     <div>
-      <LogoPageComponentsIndex :changeLogoTabs="changeLogoTabs" :imgData="imgData" :key="key" />
+      <MapsPagesComponentsIndex :changeLogoTabs="changeLogoTabs" :imgData="imgData" :key="key" />
     </div>
   </div>
 </template>
 
 <script>
-import LogoPageComponentsIndex from '../../components/img-index'
+import MapsPagesComponentsIndex from './components/maps-pages-components-index'
 import { ref } from 'vue'
 
 export default {
   name: 'MapsPagesIndex',
   components: {
-    LogoPageComponentsIndex
+    MapsPagesComponentsIndex
   },
   setup () {
     const key = ref('B')
@@ -50,51 +50,51 @@ export default {
         name: 'H',
         children: [
           {
-            name: 'H1',
+            name: '学院正门',
             src: require('@/assets/images/autumn-7562289_960_720.jpg')
           },
           {
-            name: 'H2',
+            name: '校训石',
             src: require('@/assets/images/autumn-7562289_960_720.jpg')
           },
           {
-            name: 'H3',
+            name: '综合楼',
             src: require('@/assets/images/autumn-7562289_960_720.jpg')
           },
           {
-            name: 'H4',
+            name: '教学楼',
             src: require('@/assets/images/autumn-7562289_960_720.jpg')
           },
           {
-            name: 'H5',
+            name: '图书馆',
             src: require('@/assets/images/autumn-7562289_960_720.jpg')
           },
           {
-            name: 'H6',
+            name: '培训楼',
             src: require('@/assets/images/autumn-7562289_960_720.jpg')
           },
           {
-            name: 'H7',
+            name: '学生餐厅',
             src: require('@/assets/images/autumn-7562289_960_720.jpg')
           },
           {
-            name: 'H8',
+            name: '运动场',
             src: require('@/assets/images/autumn-7562289_960_720.jpg')
           },
           {
-            name: 'H9',
+            name: '体育馆',
             src: require('@/assets/images/autumn-7562289_960_720.jpg')
           },
           {
-            name: 'H10',
+            name: '学生公寓',
             src: require('@/assets/images/autumn-7562289_960_720.jpg')
           },
           {
-            name: 'H11',
+            name: '仁爱广场',
             src: require('@/assets/images/autumn-7562289_960_720.jpg')
           },
           {
-            name: 'H12',
+            name: '校园风光',
             src: require('@/assets/images/autumn-7562289_960_720.jpg')
           }
         ]

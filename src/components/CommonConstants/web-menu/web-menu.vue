@@ -255,7 +255,6 @@ export default {
     // picBtn() 方法给 activeIndex 赋值
     const picBtn = () => {
       activeIndex.value = route.path
-      console.log(activeIndex.value)
     }
 
     // 监听route变化，发生变化立刻调用 picBtn() 方法

@@ -26,7 +26,6 @@ export default {
     // 更新面包屑导航的方法
     const renewBreadcrumb = () => {
       breadcrumbList.value = route.matched
-      console.log(breadcrumbList.value)
     }
 
     // 监听route是否改变，有变化立即调用面包屑导航更新方法

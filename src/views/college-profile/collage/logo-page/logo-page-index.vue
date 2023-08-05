@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import LogoPageComponentsIndex from '../../components/img-index'
+import LogoPageComponentsIndex from './components/logo-pages-components-index'
 import { ref } from 'vue'
 
 export default {
