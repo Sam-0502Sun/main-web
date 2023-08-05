@@ -36,6 +36,12 @@ const routes = [
             name: 'collegeLogo',
             component: () => import('../views/college-profile/collage/logo-page/logo-page-index'),
             meta: { title: '学校标识' }
+          },
+          {
+            path: '/xygk/xydt',
+            name: 'collegeMaps',
+            component: () => import('../views/college-profile/collage/maps-page/maps-pages-index'),
+            meta: { title: '学院导图' }
           }
         ]
       }
