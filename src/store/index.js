@@ -1,5 +1,6 @@
 import { createStore } from 'vuex'
 import breadcrumb from './modules/breadMenus'
+import education from './modules/education/education'
 
 export default createStore({
   state: {
@@ -11,6 +12,7 @@ export default createStore({
   actions: {
   },
   modules: {
-    breadcrumb
+    breadcrumb,
+    education
   }
 })

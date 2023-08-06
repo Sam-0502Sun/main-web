@@ -1,5 +1,5 @@
 <template>
-  <div class="collage-layout-container">
+  <div class="education-layout-container">
     <el-container>
       <el-aside width="200px">
         <el-menu
@@ -9,7 +9,7 @@
           @close="handleClose"
           router
         >
-          <template v-for="item in collageMenuList" :key="item.name">
+          <template v-for="item in menuList" :key="item.name">
             <el-menu-item :index="item.url">{{item.name}}</el-menu-item>
           </template>
         </el-menu>
@@ -22,51 +22,35 @@
 </template>
 
 <script>
-import { reactive, ref, watch } from 'vue'
-import { useRoute } from 'vue-router'
+import { reactive } from 'vue'
 
 export default {
-  name: 'CollegeIndex',
+  name: 'EducationMainIndex',
   setup () {
-    const route = useRoute()
-    const activeIndex = ref(route.path)
-    const collageMenuList = reactive([
+    const menuList = reactive([
       {
-        name: '学院介绍',
-        url: '/xygk/xyjs'
+        name: '教务动态',
+        url: '/jyjx/jwdt'
       },
       {
-        name: '校史沿革',
-        url: '/xygk/xsyg'
+        name: '教学改革',
+        url: '/jyjx/jxgg'
       },
       {
-        name: '现任领导',
-        url: '/xygk/xrld'
-      },
-      {
-        name: '学校标识',
-        url: '/xygk/xxbs'
-      },
-      {
-        name: '学院导图',
-        url: '/xygk/xydt'
+        name: '网络教学平台',
+        url: '/jyjx/wljxpt'
       }
     ])
 
-    watch(route, () => {
-      activeIndex.value = route.path
-    }, { deep: true, immediate: true })
-
     return {
-      activeIndex,
-      collageMenuList
+      menuList
     }
   }
 }
 </script>
 
 <style lang="less" scoped>
-.collage-layout-container {
+.education-layout-container {
   .el-aside {
     border-right: 1px solid #dcdfe6;
     .el-menu-item {

@@ -17,7 +17,7 @@ import { useRoute } from 'vue-router'
 import { ArrowRight } from '@element-plus/icons-vue'
 
 export default {
-  name: 'ProfileBreadcrumb',
+  name: 'WebPagesBreadcrumb',
   setup () {
     const route = useRoute()
     const breadcrumbList = ref([])

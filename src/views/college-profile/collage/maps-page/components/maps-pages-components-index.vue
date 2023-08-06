@@ -2,13 +2,17 @@
   <div class="maps-pages-container">
     <div v-for="item in imgList" :key="item.name">
       <template v-if="activeLogoTabs === item.name">
-        <div class="lots-img-box" v-if="item.children">
-          <div v-for="i in newData" :key="i.name">
-            <img class="lots-img" :src="i.src" />
-            <span>{{i.name}}</span>
+        <div v-if="item.children">
+          <div class="lots-img-body">
+            <div class="lots-img-box">
+              <div v-for="i in newData" :key="i.name">
+                <img class="lots-img" :src="i.src" />
+                <span>{{i.name}}</span>
+              </div>
+            </div>
           </div>
-          <div class="example-pagination-block">
-            <div class="example-demonstration">When you have few pages</div>
+          <div class="pagination-block">
+            <div class="example-demonstration">请选择页码：</div>
             <el-pagination
               layout="prev, pager, next"
               :total="changePage.total"
@@ -48,26 +52,33 @@ export default {
     const imgList = reactive(props.imgData)
     const newData = ref([])
     const totalDataList = reactive([])
+    // 分页器基本数据
     const changePage = reactive({
       currentPage: 1,
       total: totalDataList.length,
-      pageSize: 10
+      pageSize: 9
     })
 
+    // 监听父组件传递 props 变化，有变化立即调用更新
     watch(props, () => {
       activeLogoTabs.value = props.changeLogoTabs
+      for (const subItem of imgList) {
+        if (subItem.children) {
+          changePage.total = subItem.children.length
+        }
+      }
       handleCurrentChange(1)
     })
 
+    // 点击分页器显示当前页码数据
     const handleCurrentChange = (value) => {
-      console.log(value)
       changePage.currentPage = value
       for (const subItem of imgList) {
         if (subItem.children) {
           totalDataList.value = subItem.children
-          let i = value * 10 - 10
+          let i = value * changePage.pageSize - changePage.pageSize
           const array = []
-          while (i < changePage.currentPage * 10) {
+          while (i < changePage.currentPage * changePage.pageSize) {
             if (subItem.children[i] != null) {
               array.push(subItem.children[i])
               i++
@@ -96,20 +107,30 @@ export default {
 
 <style lang="less" scoped>
 .maps-pages-container {
-  .lots-img-box {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px 20px;
-    .lots-img {
-      display: block;
-      width: 300px;
-      height: 200px;
+  .lots-img-body {
+    width: 100%;
+    min-height: 800px;
+    .lots-img-box {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px 20px;
+      margin-top: 80px;
+      .lots-img {
+        display: block;
+        width: 300px;
+        height: 200px;
+      }
+      span {
+        display: block;
+        width: 100%;
+        text-align: center;
+      }
     }
-    span {
-      display: block;
-      width: 100%;
-      text-align: center;
-    }
+  }
+  .pagination-block {
+    width: 100%;
+    display: flex;
+    align-items: center;
   }
   .single-img-box {
     max-width: 800px;

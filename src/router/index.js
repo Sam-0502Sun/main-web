@@ -44,6 +44,33 @@ const routes = [
             meta: { title: '学院导图' }
           }
         ]
+      },
+      {
+        path: '/zzjg',
+        name: 'organization',
+        component: () => import('../views/organization/organization-index'),
+        meta: { title: '组织机构' }
+      },
+      {
+        path: '/jyjx',
+        name: 'education',
+        component: () => import('../views/education/education-index'),
+        meta: { title: '教育教学' },
+        redirect: '/jyjx/jwdt',
+        children: [
+          {
+            path: '/jyjx/jwdt',
+            name: 'dynamicAcademic',
+            component: () => import('../views/education/components/dynamicAcademic/dynamicAcademic'),
+            meta: { title: '教务动态' }
+          },
+          {
+            path: '/jyjx/jxgg',
+            name: 'educationReform',
+            component: () => import('../views/education/components/educationReform/educationReform'),
+            meta: { title: '教学改革' }
+          }
+        ]
       }
     ]
   }
