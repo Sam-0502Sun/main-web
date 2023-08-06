@@ -1,24 +1,25 @@
 <template>
-  <div>教务动态</div>
-  <div>
-    <el-table
-      :data="newData"
-      style="width: 100%"
-    >
-      <el-table-column prop="name" label="Name" width="180"/>
-      <el-table-column prop="desc" label="desc"/>
-      <el-table-column prop="date" label="Date" width="180"/>
-    </el-table>
-  </div>
-  <div class="example-pagination-block">
-    <div class="example-demonstration">When you have few pages</div>
-    <el-pagination
-      layout="prev, pager, next"
-      :total="changePage.total"
-      :page-size="changePage.pageSize"
-      @current-change="handleCurrentChange"
-      v-model:current-page="changePage.currentPage"
-    />
+  <div class="table-container">
+    <div class="table-box">
+      <el-table
+        :data="newData"
+        style="width: 100%"
+      >
+        <el-table-column prop="name" label="Name" width="180" />
+        <el-table-column prop="desc" label="desc" />
+        <el-table-column prop="date" label="Date" width="180" />
+      </el-table>
+    </div>
+    <div class="example-pagination-block">
+      <div class="example-demonstration">When you have few pages</div>
+      <el-pagination
+        layout="prev, pager, next"
+        :total="changePage.total"
+        :page-size="changePage.pageSize"
+        @current-change="handleCurrentChange"
+        v-model:current-page="changePage.currentPage"
+      />
+    </div>
   </div>
 </template>
 
@@ -112,28 +113,11 @@ export default {
     const changePage = reactive({
       currentPage: store.state.education.profile.currentPage,
       total: tableData.length,
-      pageSize: 5
+      pageSize: 10
     })
 
     // newData 定义一个新的数组用来装每页需要渲染的数据
     const newData = ref([])
-
-    // 做判断，截取 tableData 中需要的页面数据
-    if (tableData.length > changePage.pageSize) {
-      const array = []
-      let i = changePage.currentPage * changePage.pageSize - changePage.pageSize
-      while (i < changePage.currentPage * changePage.pageSize) {
-        if (tableData[i] != null) {
-          array.push(tableData[i])
-          i++
-          continue
-        }
-        break
-      }
-      newData.value = array
-    } else {
-      newData.value = tableData
-    }
 
     // 点击分页器，获取页码，对 tableData 进行数据截取
     const handleCurrentChange = (value) => {
@@ -152,6 +136,10 @@ export default {
       newData.value = array
     }
 
+    // 直接调用 handleCurrentChange（）方法，获取相应数据！ 注意：store中页码数据已经做了持久化处理，刷新不会影响当前页码信息展示！
+    handleCurrentChange(store.state.education.profile.currentPage)
+
+    // 监听到 tableData 数据发生改动，立即调用 handleCurrentChange（）方法动态刷新数据
     watch(tableData, () => {
       handleCurrentChange(changePage.currentPage)
     })
@@ -166,5 +154,12 @@ export default {
 </script>
 
 <style lang="less" scoped>
-
+.table-container {
+  padding: 20px;
+  .table-box {
+    .el-table {
+      min-height: 500px;
+    }
+  }
+}
 </style>
