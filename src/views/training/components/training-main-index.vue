@@ -13,6 +13,7 @@
           <template v-if="item.children">
             <el-sub-menu :index="item.url">
               <template #title>
+                <el-icon><Menu /></el-icon>
                 <span>{{ item.name }}</span>
               </template>
               <template v-for="i in item.children" :key="i.name">
@@ -33,9 +34,13 @@
 <script>
 import { reactive, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
+import { Menu } from '@element-plus/icons-vue'
 
 export default {
   name: 'TrainingMainIndex',
+  components: {
+    Menu
+  },
   setup () {
     const menuList = reactive([
       {
@@ -90,10 +95,31 @@ export default {
 <style lang="less" scoped>
 .training-layout-container {
   .el-aside {
-    border-right: 1px solid #dcdfe6;
+    border-right: 2px solid #dcdfe6;
+
+    :deep(.el-sub-menu) {
+      .el-sub-menu__title {
+        border-bottom: 2px solid rgba(227, 234, 234, 0.6);
+      }
+    }
+
+    .el-sub-menu.el-icon {
+      font-size: 20px;
+      color: #E3EAEA72;
+    }
+
+    :deep(.el-sub-menu.is-active.is-opened) {
+      .el-sub-menu__title {
+        background-color: #7790ea;
+        color: white;
+        .el-icon {
+          color: white;
+        }
+      }
+    }
 
     .el-menu-item {
-      border-bottom: 1px solid rgba(227, 234, 234, 0.45);
+      border-bottom: 2px solid rgba(227, 234, 234, 0.6);
     }
 
     .el-menu-item.is-active {
