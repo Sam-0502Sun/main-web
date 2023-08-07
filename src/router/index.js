@@ -71,6 +71,60 @@ const routes = [
             meta: { title: '教学改革' }
           }
         ]
+      },
+      {
+        path: '/pxjd',
+        name: 'training',
+        component: () => import('../views/training/training-index'),
+        meta: { title: '培训鉴定' },
+        redirect: '/pxjd/pxgz1',
+        children: [
+          {
+            path: '/pxjd/pxgz1',
+            name: 'trainingJob',
+            component: () => import('../views/training/components/trainingJob/training-job-index'),
+            meta: { title: '培训工作' }
+          },
+          {
+            path: '/pxjd/jddt',
+            name: 'dynamicAppraisal',
+            component: () => import('../views/training/components/dynamicAppraisal/dynamic-appraisal-index'),
+            meta: { title: '鉴定动态' },
+            redirect: '/pxjd/jddt/gzdt',
+            children: [
+              {
+                path: '/pxjd/jddt/gzdt',
+                name: 'dynamicJob',
+                component: () => import('../views/training/components/dynamicAppraisal/components/dynamic-job-index'),
+                meta: { title: '工作动态' }
+              },
+              {
+                path: '/pxjd/jddt/wjtz',
+                name: 'fileNotification',
+                component: () => import('../views/training/components/dynamicAppraisal/components/file-notification-index'),
+                meta: { title: '文件通知' }
+              },
+              {
+                path: '/pxjd/jddt/cjgg',
+                name: 'gradeAnnouncement',
+                component: () => import('../views/training/components/dynamicAppraisal/components/grade-announcement-index'),
+                meta: { title: '成绩公告' }
+              },
+              {
+                path: '/pxjd/jddt/zsxx',
+                name: 'certificatInformation',
+                component: () => import('../views/training/components/dynamicAppraisal/components/certificate-information-index'),
+                meta: { title: '证书信息' }
+              },
+              {
+                path: '/pxjd/jddt/xsjd',
+                name: 'studentIdentification',
+                component: () => import('../views/training/components/dynamicAppraisal/components/student-identification-index'),
+                meta: { title: '学生鉴定' }
+              }
+            ]
+          }
+        ]
       }
     ]
   }

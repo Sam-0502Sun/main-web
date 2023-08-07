@@ -9,7 +9,15 @@
       <template v-for="item in menuList" :key="item.name">
         <el-sub-menu v-if="item.children" :index="item.url">
           <template #title>{{ item.name }}</template>
-          <el-menu-item v-for="i in item.children" :key="i.name" :index="i.url">{{ i.name }}</el-menu-item>
+          <template v-for="i in item.children" :key="i.name">
+            <el-sub-menu v-if="i.children">
+              <template #title>{{ i.name }}</template>
+              <template v-for="ii in i.children" :key="ii.name">
+                <el-menu-item :index="ii.url">{{ ii.name }}</el-menu-item>
+              </template>
+            </el-sub-menu>
+            <el-menu-item v-else :key="i.name" :index="i.url">{{ i.name }}</el-menu-item>
+          </template>
         </el-sub-menu>
         <el-menu-item v-else :index="item.url">{{ item.name }}</el-menu-item>
       </template>
@@ -96,11 +104,33 @@ export default {
           },
           {
             name: '培训动态',
-            url: '/pxjd/pxgz1'
+            url: '/pxdt'
           },
           {
             name: '鉴定动态',
-            url: '/pxjd/jddt'
+            url: '/pxjd/jddt',
+            children: [
+              {
+                name: '工作动态',
+                url: '/pxjd/jddt/gzdt'
+              },
+              {
+                name: '文件通知',
+                url: '/pxjd/jddt/wjtz'
+              },
+              {
+                name: '成绩公告',
+                url: '/pxjd/jddt/cjgg'
+              },
+              {
+                name: '证书信息',
+                url: '/pxjd/jddt/zsxx'
+              },
+              {
+                name: '学生鉴定',
+                url: '/pxjd/jddt/xsjd'
+              }
+            ]
           }
         ]
       },

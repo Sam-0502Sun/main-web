@@ -22,7 +22,8 @@
 </template>
 
 <script>
-import { reactive } from 'vue'
+import { reactive, ref, watch } from 'vue'
+import { useRoute } from 'vue-router'
 
 export default {
   name: 'EducationMainIndex',
@@ -41,9 +42,15 @@ export default {
         url: '/jyjx/wljxpt'
       }
     ])
+    const route = useRoute()
+    const activeIndex = ref(route.path)
+    watch(route, () => {
+      activeIndex.value = route.path
+    })
 
     return {
-      menuList
+      menuList,
+      activeIndex
     }
   }
 }
