@@ -159,10 +159,13 @@ export default {
   .table-box {
     :deep(.el-table) {
       min-height: 500px;
-      .el-table__row:hover td {
-        background-color: rgba(92, 167, 158, 0.5);
-        transform: translate3d(2px, 2px, 5px);
-        transition: all 1s ease;
+      .el-table__row:hover {
+        border: 2px solid black;
+        td {
+          background-color: rgba(92, 167, 158, 0.5);
+          transform: translate3d(2px, 2px, 5px);
+          transition: all 1s ease;
+        }
       }
       .el-table__row {
         cursor: pointer;
